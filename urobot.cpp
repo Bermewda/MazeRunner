@@ -29,28 +29,28 @@ int wallvertmem[9][10] =
 
 int wallhori[10][9] =
 	{{1, 1, 1, 1, 1, 1, 1, 1, 1}, //0,0   0,1
-	 {0, 0, 0, 0, 0, 0, 1, 0, 0}, //1,0
-	 {0, 0, 0, 0, 1, 0, 0, 0, 0},
-	 {0, 0, 1, 0, 0, 1, 0, 1, 0},
-	 {0, 0, 0, 0, 0, 1, 0, 0, 0},
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0}, //1,0
+	 {0, 0, 1, 1, 1, 1, 1, 1, 1},
+	 {0, 0, 0, 1, 1, 1, 1, 1, 0},
+	 {0, 0, 0, 1, 0, 0, 0, 0, 0},
 
-	 {0, 0, 1, 0, 1, 1, 1, 0, 1},
-	 {0, 0, 0, 1, 1, 1, 0, 1, 0},
-	 {0, 0, 0, 0, 0, 0, 0, 0, 0},
-	 {0, 0, 0, 0, 0, 0, 0, 1, 0},
+	 {0, 0, 1, 0, 1, 0, 1, 0, 0},
+	 {0, 0, 0, 0, 1, 0, 1, 1, 0},
+	 {0, 0, 0, 1, 0, 0, 0, 1, 0},
+	 {0, 0, 0, 1, 0, 0, 0, 1, 0},
 	 {1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
 int wallvert[9][10] =
-	{{1, 0, 0, 1, 0, 0, 1, 0, 0, 1}, //0,0   0,1
-	 {1, 0, 0, 1, 1, 0, 0, 1, 0, 1}, //1,0
-	 {1, 0, 0, 1, 0, 0, 0, 1, 0, 1},
-	 {1, 0, 1, 1, 1, 1, 1, 0, 1, 1},
+	{{1, 0, 0, 0, 0, 0, 0, 0, 0, 1}, //0,0   0,1
+	 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1}, //1,0
+	 {1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+	 {1, 0, 1, 1, 1, 0, 1, 1, 1, 1},
 
-	 {1, 0, 1, 0, 1, 0, 0, 1, 1, 1},
-	 {1, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-	 {1, 0, 0, 0, 0, 0, 1, 1, 1, 1},
-	 {1, 0, 0, 0, 0, 0, 1, 1, 1, 1},
-	 {1, 0, 0, 0, 0, 0, 1, 0, 0, 1}};
+	 {1, 0, 1, 0, 0, 1, 0, 0, 0, 1},
+	 {1, 0, 0, 1, 1, 1, 1, 1, 1, 1},
+	 {1, 0, 0, 1, 0, 1, 1, 1, 0, 1},
+	 {1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
+	 {1, 0, 0, 1, 0, 0, 0, 0, 0, 1}};
 
 int car[9][9] =
 	{{8, 7, 6, 5, 4, 5, 6, 7, 8}, //0,0   0,1
@@ -62,70 +62,116 @@ int car[9][9] =
 	 {6, 5, 4, 3, 2, 3, 4, 5, 6},
 	 {7, 6, 5, 4, 3, 4, 5, 6, 7},
 	 {8, 7, 6, 5, 4, 5, 6, 7, 8}};
-int x = 8, y = 8;
-int endx = 4, endy = 4;
+
+int ava[9][9] =
+	{{0, 0, 0, 0, 0, 0, 0, 0, 0}, //0,0   0,1
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0}, //1,0
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	 {0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
 int car1[9][9] =
-	{{16, 15, 14, 13, 12, 11, 10, 9, 8}, //0,0   0,1
-	 {15, 14, 13, 12, 11, 10, 9, 8, 7},  //1,0
-	 {14, 13, 12, 11, 10, 9, 8, 7, 6},
-	 {13, 12, 11, 10, 9, 8, 7, 6, 5},
-	 {12, 11, 10, 9, 8, 7, 6, 5, 4},
-	 {11, 10, 9, 8, 7, 6, 5, 4, 3},
-	 {10, 9, 8, 7, 6, 5, 4, 3, 2},
-	 {9, 8, 7, 6, 5, 4, 3, 2, 1},
-	 {8, 7, 6, 5, 4, 3, 2, 1, 0}};
+	{
+		{81, 81, 81, 81, 81, 81, 81, 81, 81}, //0,0   0,1
+		{81, 81, 81, 81, 81, 81, 81, 81, 81}, //1,0
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 0}};
 
+int x = 8, y = 8;
+int endx = 4, endy = 4;
 int pattern = 0;
 int direction = 0;
 //#front=1 left=2  right=4  front+left+right=7
 //#front+left=3 front+right=5 left+right=6
+int avalblock = 0;
+int pathblock = 0;
 
+void printcar();
 void printwall();
 void checkwall();
 void min2way(int a, int b);
 void min3way(int a, int b, int c);
 void checkpatndi();
 void updatefloodfill();
+void checkstack();
+int min2(int a, int b);
+int min3(int a, int b, int c);
+int min4(int a, int b, int c, int d);
+void pushstack();
+void changemap();
+vector<int> x1;
+vector<int> x2;
+
+vector<int> y1;
+vector<int> y2;
 
 int main()
 {
-	vector<int> n;
+	x1.push_back(x);
+	y1.push_back(y);
 	while (x != endx || y != endy)
 	{
+		ava[x][y] = 1;
 		printf("%d : (%d,%d) \n", direction, x, y);
 		pattern = 0;
 		checkwall();
+		pushstack();
+		checkstack();
 		checkpatndi();
 	}
+	x1.clear();
+	y1.clear();
+	x2.clear();
+	y2.clear();
 	printwall();
-
-	for (int i = 0; i < 9; i++)
-	{
-		for (int j = 0; j < 9; j++)
-		{
-			car[i][j] = car1[i][j];
-		}
-	}
+	printcar();
+	changemap();
+	changemap();
+	//printcar();
 	x = 4;
 	y = 4;
 	endx = 8;
 	endy = 8;
-
+	x1.push_back(x);
+	y1.push_back(y);
 	while (x != endx || y != endy)
 	{
+		ava[x][y] = 1;
 		printf("%d : (%d,%d) \n", direction, x, y);
 		pattern = 0;
 		checkwall();
+		pushstack();
+		checkstack();
 		checkpatndi();
 	}
 	printwall();
+	printcar();
 
 	int check;
 	scanf("%d", &check);
 	return 0;
 }
 
+void printcar()
+{
+	for (int i = 0; i < 9; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{
+			printf("%2d ", car[i][j]);
+		}
+		printf("\n");
+	}
+}
 void printwall()
 {
 	printf("wallmap\n");
@@ -384,7 +430,7 @@ void min2way(int a, int b)
 			default:
 				printf("go left\n");
 				y--;
-				direction = 0;
+				direction = 1;
 				break; //front,left
 			}
 			break;
@@ -584,7 +630,6 @@ void min3way(int a, int b, int c)
 
 void checkpatndi()
 {
-
 	switch (direction)
 	{
 	case 0:
@@ -763,5 +808,445 @@ void checkpatndi()
 			break; //front+left+right
 		}
 		break;
+	}
+}
+
+void checkstack()
+{
+	int bufferx = 0;
+	int buffery = 0;
+	int checkw = 0;
+	while (!x1.empty() && !y1.empty())
+	{
+		checkw = 0;
+		bufferx = x1.back();
+		buffery = y1.back();
+		if (bufferx == endx && buffery == endy)
+		{
+			break;
+		}
+		x1.pop_back();
+		y1.pop_back();
+		x2.push_back(bufferx);
+		y2.push_back(buffery);
+		printf("(%d,%d) ", bufferx, buffery);
+		if (wallhorimem[bufferx][buffery] == 1)
+		{
+			printf("*front ");
+			checkw += 1; //#front
+		}
+		if (wallvertmem[bufferx][buffery] == 1)
+		{
+			printf("*left ");
+			checkw += 2; //#left
+		}
+		if (wallvertmem[bufferx][buffery + 1] == 1)
+		{
+			printf("*right ");
+			checkw += 4; //#right
+		}
+		if (wallhorimem[bufferx + 1][buffery] == 1)
+		{
+			printf("*back ");
+			checkw += 8; //#front
+		}
+		printf("\n");
+		switch (checkw)
+		{
+		case 0: //front,left,right,back
+			car[bufferx][buffery] = min4(car[bufferx - 1][buffery], car[bufferx][buffery - 1], car[bufferx][buffery + 1], car[bufferx + 1][buffery]);
+			break;
+		case 1: //left,right,back
+			car[bufferx][buffery] = min3(car[bufferx][buffery - 1], car[bufferx][buffery + 1], car[bufferx + 1][buffery]);
+			break;
+		case 2: //front,right,back
+			car[bufferx][buffery] = min3(car[bufferx - 1][buffery], car[bufferx][buffery + 1], car[bufferx + 1][buffery]);
+			break;
+		case 3: //back,right
+			car[bufferx][buffery] = min2(car[bufferx][buffery + 1], car[bufferx + 1][buffery]);
+			break;
+		case 4: //front,left,back
+			car[bufferx][buffery] = min3(car[bufferx - 1][buffery], car[bufferx][buffery - 1], car[bufferx + 1][buffery]);
+			break;
+		case 5: //left,back
+			car[bufferx][buffery] = min2(car[bufferx][buffery - 1], car[bufferx + 1][buffery]);
+			break;
+		case 6: //front,back
+			car[bufferx][buffery] = min2(car[bufferx - 1][buffery], car[bufferx + 1][buffery]);
+			break;
+		case 7: //back
+			car[bufferx][buffery] = car[bufferx + 1][buffery] + 1;
+			break;
+		case 8: //front,left,right
+			car[bufferx][buffery] = min3(car[bufferx - 1][buffery], car[bufferx][buffery - 1], car[bufferx][buffery + 1]);
+			break;
+		case 9: //left,right
+			car[bufferx][buffery] = min2(car[bufferx][buffery - 1], car[bufferx][buffery + 1]);
+			break;
+		case 10: //front,right
+			car[bufferx][buffery] = min2(car[bufferx - 1][buffery], car[bufferx][buffery + 1]);
+			break;
+		case 11: //right
+			car[bufferx][buffery] = car[bufferx][buffery + 1] + 1;
+			break;
+		case 12: //front,left
+			car[bufferx][buffery] = min2(car[bufferx - 1][buffery], car[bufferx][buffery - 1]);
+			break;
+		case 13: //left
+			car[bufferx][buffery] = car[bufferx][buffery - 1] + 1;
+			break;
+		case 14: //front
+			car[bufferx][buffery] = car[bufferx - 1][buffery] + 1;
+			break;
+		default: //no
+			break;
+		}
+	}
+
+	while (!x2.empty() && !y2.empty())
+	{
+		if (bufferx == endx && buffery == endy)
+		{
+			break;
+		}
+		bufferx = x2.back();
+		buffery = y2.back();
+		x2.pop_back();
+		y2.pop_back();
+		x1.push_back(bufferx);
+		y1.push_back(buffery);
+	}
+}
+
+int min2(int a, int b)
+{
+	if (a < b)
+	{
+		return a + 1;
+	}
+	else
+	{
+		return b + 1;
+	}
+}
+
+int min3(int a, int b, int c)
+{
+	if (((a < b) && (a < c)) || ((a == c) && (a < b)) || ((a == b) && (a < c)))
+	{
+		return a + 1;
+	}
+	else if ((b < a) && (b < c) || ((b == c) && (b < a)))
+	{
+		return b + 1;
+	}
+	else if ((c < a) && (c < b))
+	{
+		return c + 1;
+	}
+	else
+	{
+		return a + 1;
+	}
+}
+
+int min4(int a, int b, int c, int d)
+{
+	if (((a < b) && (a < c) && (a < d)) || ((a == b) && (a < c) && (a < d)) || ((a == c) && (a < b) && (a < d)) || ((a == d) && (a < b) && (a < c)))
+	{
+		return a + 1;
+	}
+	else if (((b < a) && (b < c) && (b < d)) || ((b == c) && (b < a) && (b < d)) || ((b == d) && (b < a) && (b < c)))
+	{
+		return b + 1;
+	}
+	else if ((c < a) && (c < b) && (c < d) || ((c == d) && (c < a) && (c < b)))
+	{
+		return c + 1;
+	}
+	else if ((d < a) && (d < b) && (d < c))
+	{
+		return d + 1;
+	}
+	else
+	{
+		return a + 1;
+	}
+}
+
+void pushstack()
+{
+	switch (direction)
+	{
+	case 0:
+		switch (pattern)
+		{
+		case 0: //no wall 3 way
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			break;
+		case 1: //2 way left,right
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			break;
+		case 2: //2 way front,right
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			break;
+		case 4: //2 way front,left
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			break;
+		case 3: //right
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			break;
+		case 5: //left
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			break;
+		case 6: // front
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			break;
+		default: //U turn
+			break;
+		}
+		break;
+	case 1:
+		switch (pattern)
+		{
+		case 0: //no wall 3 way
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			break;
+		case 1: //2 way left,right
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			break;
+		case 2: //2 way front,right
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			break;
+		case 4: //2 way front,left
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			break;
+		case 3: //right
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			break;
+		case 5: //left
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			break;
+		case 6: // front
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			break;
+		default: //U turn
+			break;
+		}
+		break;
+	case 2:
+		switch (pattern)
+		{
+		case 0: //no wall 3 way
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			break;
+		case 1: //2 way left,right
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			break;
+		case 2: //2 way front,right
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			break;
+		case 4: //2 way front,left
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			break;
+		case 3: //right
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			break;
+		case 5: //left
+			x1.push_back(x - 1);
+			y1.push_back(y);
+			break;
+		case 6: // front
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			break;
+		default: //U turn
+			break;
+		}
+		break;
+	default:
+		switch (pattern)
+		{
+		case 0: //no wall 3 way
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			break;
+		case 1: //2 way left,right
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			break;
+		case 2: //2 way front,right
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			break;
+		case 4: //2 way front,left
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			break;
+		case 3: //right
+			x1.push_back(x);
+			y1.push_back(y - 1);
+			break;
+		case 5: //left
+			x1.push_back(x);
+			y1.push_back(y + 1);
+			break;
+		case 6: // front
+			x1.push_back(x + 1);
+			y1.push_back(y);
+			break;
+		default: //U turn
+			break;
+		}
+		break;
+	}
+}
+
+void changemap()
+{
+	int checkw = 0;
+	for (int buffery = 8; buffery >= 0; buffery--)
+	{
+		for (int bufferx = 8; bufferx >= 0; bufferx--)
+		{
+			checkw = 0;
+			if (wallhorimem[bufferx][buffery] == 1)
+			{
+				checkw += 1; //#front
+			}
+			if (wallvertmem[bufferx][buffery] == 1)
+			{
+				checkw += 2; //#left
+			}
+			if (wallvertmem[bufferx][buffery + 1] == 1)
+			{
+				checkw += 4; //#right
+			}
+			if (wallhorimem[bufferx + 1][buffery] == 1)
+			{
+				checkw += 8; //#front
+			}
+			switch (checkw)
+			{
+			case 0: //front,left,right,back
+				car1[bufferx][buffery] = min4(car1[bufferx - 1][buffery], car1[bufferx][buffery - 1],
+											  car1[bufferx][buffery + 1], car1[bufferx + 1][buffery]);
+				break;
+			case 1: //left,right,back
+				car1[bufferx][buffery] = min3(car1[bufferx][buffery - 1], car1[bufferx][buffery + 1], car1[bufferx + 1][buffery]);
+				break;
+			case 2: //front,right,back
+				car1[bufferx][buffery] = min3(car1[bufferx - 1][buffery], car1[bufferx][buffery + 1], car1[bufferx + 1][buffery]);
+				break;
+			case 3: //back,right
+				car1[bufferx][buffery] = min2(car1[bufferx][buffery + 1], car1[bufferx + 1][buffery]);
+				break;
+			case 4: //front,left,back
+				car1[bufferx][buffery] = min3(car1[bufferx - 1][buffery], car1[bufferx][buffery - 1], car1[bufferx + 1][buffery]);
+				break;
+			case 5: //left,back
+				car1[bufferx][buffery] = min2(car1[bufferx][buffery - 1], car1[bufferx + 1][buffery]);
+				break;
+			case 6: //front,back
+				car1[bufferx][buffery] = min2(car1[bufferx - 1][buffery], car1[bufferx + 1][buffery]);
+				break;
+			case 7: //back
+				car1[bufferx][buffery] = car1[bufferx + 1][buffery] + 1;
+				break;
+			case 8: //front,left,right
+				car1[bufferx][buffery] = min3(car1[bufferx - 1][buffery], car1[bufferx][buffery - 1], car1[bufferx][buffery + 1]);
+				break;
+			case 9: //left,right
+				car1[bufferx][buffery] = min2(car1[bufferx][buffery - 1], car1[bufferx][buffery + 1]);
+				break;
+			case 10: //front,right
+				car1[bufferx][buffery] = min2(car1[bufferx - 1][buffery], car1[bufferx][buffery + 1]);
+				break;
+			case 11: //right
+				car1[bufferx][buffery] = car1[bufferx][buffery + 1] + 1;
+				break;
+			case 12: //front,left
+				car1[bufferx][buffery] = min2(car1[bufferx - 1][buffery], car1[bufferx][buffery - 1]);
+				break;
+			case 13: //left
+				car1[bufferx][buffery] = car1[bufferx][buffery - 1] + 1;
+				break;
+			case 14: //front
+				car1[bufferx][buffery] = car1[bufferx - 1][buffery] + 1;
+				break;
+			default: //no
+				break;
+			}
+			if (bufferx == 8 && buffery == 8)
+			{
+				car1[8][8] = 0;
+			}
+		}
+	}
+	for (int i = 0; i < 9; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{
+			car[i][j] = car1[i][j];
+		}
 	}
 }
