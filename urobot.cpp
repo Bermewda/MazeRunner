@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <vector>
 
@@ -85,7 +86,17 @@ int car1[9][9] =
 		{81, 81, 81, 81, 81, 81, 81, 81, 81},
 		{81, 81, 81, 81, 81, 81, 81, 81, 81},
 		{81, 81, 81, 81, 81, 81, 81, 81, 0}};
-
+int car2[9][9] =
+	{
+		{81, 81, 81, 81, 81, 81, 81, 81, 81}, //0,0   0,1
+		{81, 81, 81, 81, 81, 81, 81, 81, 81}, //1,0
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 0, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81},
+		{81, 81, 81, 81, 81, 81, 81, 81, 81}};
 int x = 8, y = 8;
 int endx = 4, endy = 4;
 int pattern = 0;
@@ -116,6 +127,7 @@ vector<int> y2;
 
 int main()
 {
+	//Round1
 	x1.push_back(x);
 	y1.push_back(y);
 	while (x != endx || y != endy)
@@ -128,15 +140,17 @@ int main()
 		checkstack();
 		checkpatndi();
 	}
+	printwall();
+	printcar();
+
+	//Round2
+	changemap();
+	changemap();
+	changemap();
 	x1.clear();
 	y1.clear();
 	x2.clear();
 	y2.clear();
-	printwall();
-	printcar();
-	changemap();
-	changemap();
-	//printcar();
 	x = 4;
 	y = 4;
 	endx = 8;
@@ -155,6 +169,18 @@ int main()
 	}
 	printwall();
 	printcar();
+
+	//Round3
+	x1.clear();
+	y1.clear();
+	x2.clear();
+	y2.clear();
+	x1.push_back(4);
+	y1.push_back(4);
+	x = 8;
+	y = 8;
+	endx = 4;
+	endy = 4;
 
 	int check;
 	scanf("%d", &check);
@@ -228,6 +254,10 @@ void printwall()
 		}
 		printf("\n");
 	}
+}
+
+void lastmap()
+{
 }
 
 void checkwall()
