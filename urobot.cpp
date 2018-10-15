@@ -176,12 +176,6 @@ int main()
 	printf("\n");
 
 	//Round3
-	x1.clear();
-	y1.clear();
-	x2.clear();
-	y2.clear();
-	x1.push_back(4);
-	y1.push_back(4);
 	x = 8;
 	y = 8;
 	endx = 4;
@@ -1355,7 +1349,6 @@ int min2(int a, int b)
 		return b + 1;
 	}
 }
-
 int min3(int a, int b, int c)
 {
 	if (((a < b) && (a < c)) || ((a == c) && (a < b)) || ((a == b) && (a < c)))
@@ -1375,7 +1368,6 @@ int min3(int a, int b, int c)
 		return a + 1;
 	}
 }
-
 int min4(int a, int b, int c, int d)
 {
 	if (((a < b) && (a < c) && (a < d)) || ((a == b) && (a < c) && (a < d)) || ((a == c) && (a < b) && (a < d)) || ((a == d) && (a < b) && (a < c)))
