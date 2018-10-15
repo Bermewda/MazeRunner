@@ -121,7 +121,7 @@ int min4(int a, int b, int c, int d);
 void pushstack();
 void changemap();
 void changemap1();
-int lastmap(int bufferx, int buffery);
+void countava();
 vector<int> x1;
 vector<int> x2;
 
@@ -200,20 +200,33 @@ int main()
 	printcar();
 	while (x != endx || y != endy)
 	{
-		ava[x][y] = 1;
 		printf("%d : (%d,%d) \n", direction, x, y);
 		pattern = 0;
 		checkwall();
 		pushstack();
 		checkstack();
 		checkpatndi();
+		pathblock += 1;
 	}
-
+	countava();
+	printf("\nAva : %d , Path : %d", avalblock, pathblock);
 	int check;
 	scanf("%d", &check);
 	return 0;
 }
-
+void countava()
+{
+	for (int i = 0; i < 9; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{
+			if (ava[i][j] == 1)
+			{
+				avalblock += 1;
+			}
+		}
+	}
+}
 void printcar()
 {
 	for (int i = 0; i < 9; i++)
